@@ -8,5 +8,15 @@
   "contact_us_title": "If you have some ideas or troubles to our product,\nplease write us",
   "hint_text": "Enter your opinion",
   "sent": "Sent",
-  "thank_you_message": "Thank you, you\\'r message was send! :)"
+  "thank_you_message": "Thank you, you\\'r message was send! :)",
+  "login_title": "Sign in",
+  "username": "Username",
+  "password": "Password",
+  "have_account": "If you already have an account, click here",
+  "donthave_account": "If you do not have an account, click here to sign up",
+  "sign_up": "Sign up",
+  "name": "Name",
+  "surname": "Surname",
+  "birthday": "Pick up your birthday, please",
+  "email" : "Email"
 }

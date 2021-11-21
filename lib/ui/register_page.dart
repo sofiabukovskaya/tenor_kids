@@ -1,27 +1,34 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:oktoast/oktoast.dart';
-import 'package:tenor_kids/ui/parent_page.dart';
-import 'package:tenor_kids/ui/register_page.dart';
-import 'package:http/http.dart' as http;
+import 'package:tenor_kids/ui/login_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
+  DateTime selectedDate = DateTime.now();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
-    TextEditingController userText = TextEditingController();
-    TextEditingController passwordText = TextEditingController();
-
     return Scaffold(
       backgroundColor: const Color(0xFFfffffe),
       appBar: PreferredSize(
@@ -66,8 +73,8 @@ class _LoginPageState extends State<LoginPage> {
       body: Center(
         child: Column(
           children: [
-            const SizedBox(height: 200),
-            Text('login_title'.tr(),
+            const SizedBox(height: 70),
+            Text('sign_up'.tr(),
                 textAlign: TextAlign.center,
                 style: GoogleFonts.patuaOne(
                     color: const Color(0xFF11265b), fontSize: 25)),
@@ -75,7 +82,77 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: const EdgeInsets.only(left: 500, right: 500),
               child: TextFormField(
-                controller: userText,
+                decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color: const Color(0xFF11265b).withOpacity(0.5),
+                        width: 2.0),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  hintText: 'name'.tr(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: BorderSide(
+                        color: const Color(0xFF11265b).withOpacity(0.5)),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(left: 500, right: 500),
+              child: TextFormField(
+                decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color: const Color(0xFF11265b).withOpacity(0.5),
+                        width: 2.0),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  hintText: 'surname'.tr(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: BorderSide(
+                        color: const Color(0xFF11265b).withOpacity(0.5)),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(left: 500, right: 500),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color: const Color(0xFF11265b).withOpacity(0.5),
+                          width: 2.0),
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    hintText: selectedDate == DateTime.now()
+                        ? DateFormat('yyyy-MM-dd').format(selectedDate)
+                        : 'birthday'.tr(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: BorderSide(
+                          color: const Color(0xFF11265b).withOpacity(0.5)),
+                    ),
+                    suffixIcon: IconButton(
+                      onPressed: () => _selectDate(context),
+                      icon: Icon(
+                        Icons.calendar_today,
+                        color: Colors.grey.shade900,
+                      ),
+                    )),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(left: 500, right: 500),
+              child: TextFormField(
                 decoration: InputDecoration(
                   fillColor: Colors.white,
                   focusedBorder: OutlineInputBorder(
@@ -97,7 +174,6 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: const EdgeInsets.only(left: 500, right: 500),
               child: TextFormField(
-                controller: passwordText,
                 obscureText: true,
                 decoration: InputDecoration(
                   fillColor: Colors.white,
@@ -129,31 +205,18 @@ class _LoginPageState extends State<LoginPage> {
                       primary: const Color(0xFFf07735),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20))),
-                  onPressed: () async {
-                    final accessToken =
-                        await loginFunction(userText.text, passwordText.text);
-                    if (accessToken != 'error') {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ParentPage()));
-                    } else {
-                      //show some error message
-                    }
-                  },
+                  onPressed: () {},
                   child: Center(
-                    child: Text('login_title'.tr()),
+                    child: Text('sign_up'.tr()),
                   )),
             ),
             const SizedBox(height: 25),
             InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const RegisterPage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()));
               },
-              child: Text('donthave_account'.tr(),
+              child: Text('have_account'.tr(),
                   style: GoogleFonts.patuaOne(
                     color: Colors.grey.shade600,
                     fontSize: 14,
@@ -164,31 +227,5 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
-  }
-
-  loginFunction(String username, String password) async {
-    var client = http.Client();
-
-    final Map<String, dynamic> data = {
-      'username': username,
-      'password': password,
-    };
-    try {
-      final http.Response response = await client.post(
-          Uri.parse('https://localhost:44307/api/UserAuth/login'),
-          body: data);
-      print(response.statusCode);
-      if (response.statusCode == 200) {
-        print(jsonDecode(response.body));
-        final json = jsonDecode(response.body);
-        final result = json['accessToken'];
-        print(result.toString());
-        return Future.value(result.toString());
-      }
-      return Future.value('error');
-    } catch (e) {
-      print(e.toString());
-    }
-    return Future.value('error');
   }
 }

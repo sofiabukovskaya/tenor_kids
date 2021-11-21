@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:tenor_kids/ui/login_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,21 +19,20 @@ class _HomePageState extends State<HomePage> {
     final dataKeyAbout = GlobalKey();
     final dataKeyHome = GlobalKey();
     final dataKeyContactUs = GlobalKey();
-
     return Scaffold(
         backgroundColor: const Color(0xFFfffffe),
         appBar: PreferredSize(
             preferredSize: Size(screenSize.width, 1000),
             child: Padding(
               padding: const EdgeInsets.only(
-                  left: 80, top: 40, right: 80, bottom: 10),
+                  left: 40, top: 40, right: 40, bottom: 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text('Tenor Kids',
                       style: GoogleFonts.patuaOne(
                           color: const Color(0xFFf07735), fontSize: 40)),
-                  SizedBox(width: screenSize.width / 2.4),
+                  SizedBox(width: screenSize.width / 2.6),
                   InkWell(
                     onTap: () {
                       setState(() {
@@ -92,7 +92,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(width: 70),
                   IconButton(
-                    onPressed: () => {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage()));
+                    },
                     icon: const Icon(Icons.person),
                     color: const Color(0xFF11265b),
                   )
@@ -120,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                                 color: const Color(0xFF11265b), fontSize: 20))
                       ],
                     ),
-                    SizedBox(width: screenSize.width / 5),
+                    SizedBox(width: screenSize.width / 6),
                     SizedBox(
                         height: 600,
                         width: 600,
