@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:tenor_kids/ui/register_page.dart';
-import 'package:http/http.dart' as http;
 
 class ParentPage extends StatefulWidget {
   const ParentPage({Key? key}) : super(key: key);
@@ -56,7 +54,7 @@ class _ParentPageState extends State<ParentPage> {
               ],
             ),
           )),
-      body: Center(
+      body: const Center(
         child: Text('parent page'),
       ),
     );

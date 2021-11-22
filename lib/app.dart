@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tenor_kids/ui/home_page.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:tenor_kids/ui/test/testA_page.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class App extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      home: const HomePage(),
+      home: const TestAPage(),
     );
   }
 }

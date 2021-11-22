@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:tenor_kids/ui/parent_page.dart';
 import 'package:tenor_kids/ui/register_page.dart';
 import 'package:http/http.dart' as http;

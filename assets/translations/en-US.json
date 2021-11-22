@@ -18,5 +18,12 @@
   "name": "Name",
   "surname": "Surname",
   "birthday": "Pick up your birthday, please",
-  "email" : "Email"
+  "email" : "Email",
+  "test_a_title": "Test level A",
+  "question1": "Question №1",
+  "current_day": "What is the current day of the week?",
+  "sent_answer": "Send answer",
+  "enter": "Enter answer",
+  "right_answer": "Right answer",
+  "OK": "Ok"
 }
