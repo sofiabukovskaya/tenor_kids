@@ -53,5 +53,8 @@
   "question10_text": "Birch has leaves, and pine has ...  ",
   "needles": "Needles",
   "finish": "Finish the test",
-  "sent_result": "Sent a result"
+  "sent_result": "Sent a result",
+  "add_child": "Add a child",
+  "add": "Add",
+  "cancel": "Cancel"
 }
