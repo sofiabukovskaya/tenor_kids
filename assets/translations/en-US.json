@@ -56,5 +56,9 @@
   "sent_result": "Sent a result",
   "add_child": "Add a child",
   "add": "Add",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "birthday_kid": "Pick up child's birthday, please",
+  "first_name": "First name",
+  "last_name": "Last name",
+  "birthday_title": "Date of birthday"
 }

@@ -186,6 +186,7 @@ class _LoginPageState extends State<LoginPage> {
       }
       return Future.value('error');
     } catch (e) {
+      // ignore: avoid_print
       print(e.toString());
     }
     return Future.value('error');
