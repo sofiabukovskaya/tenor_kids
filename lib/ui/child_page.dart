@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tenor_kids/ui/test/testA_page.dart';
 
 class ChildPage extends StatefulWidget {
   const ChildPage({Key? key, required this.childName}) : super(key: key);
@@ -11,6 +12,7 @@ class ChildPage extends StatefulWidget {
 }
 
 class _ChildPageState extends State<ChildPage> {
+  Color colorText = const Color(0xff11265b);
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -63,17 +65,52 @@ class _ChildPageState extends State<ChildPage> {
             ),
           )),
       body: SingleChildScrollView(
-        child: Column(children: [
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(
             padding: const EdgeInsets.only(top: 30, left: 110, right: 80),
             child: Text(
-              'Hey ${widget.childName}!',
+             'hi'.tr()+'${widget.childName}!',
               style: GoogleFonts.patuaOne(
                   fontWeight: FontWeight.w700,
                   color: const Color(0xFF11265b),
                   fontSize: 80),
             ),
-          )
+          ),
+          const SizedBox(height: 40),
+          Padding(
+            padding: const EdgeInsets.only(left: 110),
+            child: Text('screening'.tr(),
+                style: GoogleFonts.patuaOne(
+                    fontWeight: FontWeight.w700,
+                    color: const Color(0xFF11265b),
+                    fontSize: 35)),
+          ),
+          const SizedBox(height: 60),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 110),
+              child: InkWell(
+                onHover: (value) {
+                  setState(() {
+                    setState(() {
+                      if(value) {
+                        colorText = const Color(0xff7494e2);
+                      } else {
+                        colorText = const Color(0xFF11265b);
+                      }
+                    });
+                  });
+                },
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const TestAPage())),
+                child: Text('test_a_title'.tr(),
+                    style: GoogleFonts.patuaOne(
+                        color: colorText,
+                        fontSize: 24,
+                        decoration: TextDecoration.underline)),
+              ),
+            ),
+          ),
         ]),
       ),
     );

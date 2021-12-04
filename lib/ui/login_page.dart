@@ -137,7 +137,15 @@ class _LoginPageState extends State<LoginPage> {
                           MaterialPageRoute(
                               builder: (context) => const ParentPage()));
                     } else {
-                      //show some error message
+                      showDialog(context: context, builder: (context) => AlertDialog(
+                        title: const Text('Sorry, something gone wrong, try again'),
+                        actions: [
+                          TextButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              child: Text('Ok',
+                                  style: GoogleFonts.patuaOne(fontSize: 20)))
+                        ],
+                      ));
                     }
                   },
                   child: Center(

@@ -7,6 +7,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tenor_kids/ui/test_result_page.dart';
 
 class TestAPage extends StatefulWidget {
   const TestAPage({Key? key}) : super(key: key);
@@ -1395,6 +1396,8 @@ class _TestAPageState extends State<TestAPage> {
                     onPressed: () {
                       setState(() {
                         _timer.cancel();
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) =>  TestResultPage(seconds: seconds)));
                       });
                     },
                     child: Center(
@@ -1448,52 +1451,55 @@ class _TestAPageState extends State<TestAPage> {
               ],
             ),
           )),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 40),
-          Padding(
-            padding: const EdgeInsets.only(left: 40, right: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('test_a_title'.tr(),
-                    style: GoogleFonts.patuaOne(
-                        color: const Color(0xFF11265b), fontSize: 30)),
-                SizedBox(
-                  height: 100,
-                  width: 200,
-                  child: Text(
-                    "0$hours:0$minutes:$seconds",
-                    style: GoogleFonts.patuaOne(
-                        color: const Color(0xFF11265b), fontSize: 30),
-                  ),
-                )
-              ],
-            ),
-          ),
-          Center(
-            child: SizedBox(
-              height: 600,
-              width: 600,
-              child: Swiper(
-                itemBuilder: (BuildContext context, int index) {
-                  return cardsList[index];
-                },
-                controller: swiperController,
-                itemCount: cardsList.length,
-                pagination: const SwiperPagination(
-                    builder: DotSwiperPaginationBuilder(
-                        color: Color(0xFFf07735),
-                        activeColor: Color(0xFF11265b))),
-                control: SwiperControl(
-                    color: const Color(0xFFf07735).withOpacity(0.4),
-                    disableColor: const Color(0xFFf07735)),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.only(left: 40, right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('test_a_title'.tr(),
+                      style: GoogleFonts.patuaOne(
+                          color: const Color(0xFF11265b), fontSize: 30)),
+                  SizedBox(
+                    height: 100,
+                    width: 200,
+                    child: Text(
+                      "0$hours:0$minutes:$seconds",
+                      style: GoogleFonts.patuaOne(
+                          color: const Color(0xFF11265b), fontSize: 30),
+                    ),
+                  )
+                ],
               ),
             ),
-          )
-        ],
+            Center(
+              child: SizedBox(
+                height: 600,
+                width: 600,
+                child: Swiper(
+                  itemBuilder: (BuildContext context, int index) {
+                    return cardsList[index];
+                  },
+                  controller: swiperController,
+                  itemCount: cardsList.length,
+                  pagination: const SwiperPagination(
+                      builder: DotSwiperPaginationBuilder(
+                          color: Color(0xFFf07735),
+                          activeColor: Color(0xFF11265b))),
+                  control: SwiperControl(
+                      color: const Color(0xFFf07735).withOpacity(0.4),
+                      disableColor: const Color(0xFFf07735)),
+                ),
+              ),
+            ),
+            const SizedBox(height: 40),
+          ],
+        ),
       ),
     );
   }

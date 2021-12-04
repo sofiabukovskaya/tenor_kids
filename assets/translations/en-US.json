@@ -60,5 +60,11 @@
   "birthday_kid": "Pick up child's birthday, please",
   "first_name": "First name",
   "last_name": "Last name",
-  "birthday_title": "Date of birthday"
+  "birthday_title": "Date of birthday",
+  "screening": "Screening test: ",
+  "hi": "Hello, ",
+  "result_title": "Your result is:",
+  "testA_result": "Test A result",
+  "time_passed": "You passed the test in",
+  "pdf_title": "Download the result in PDF format"
 }
